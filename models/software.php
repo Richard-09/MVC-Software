@@ -21,6 +21,27 @@ class Software extends Conexion{
       die($e->getMessage());
     }
   }
-  
+
+  public function registrarSoftware($datos= []){
+    try{
+
+      $consulta = $this->accesoBD->prepare("CALL spu_software_registrar(?, ?, ?, ?, ?, ?)");
+
+      $consulta->execute(
+        array(
+          $datos["nombre"],
+          $datos["precio"],
+          $datos["fechalanzamiento"],
+          $datos["tiposoftware"],
+          $datos["desarrollador"],
+          $datos["lenguajedesarrollado"] 
+        )
+        );
+    }
+    catch(Exception $e){
+      die($e->getMessage());
+    }
+  }
+
 }
 ?>
