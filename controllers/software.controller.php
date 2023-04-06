@@ -46,6 +46,9 @@ if (isset($_POST['operation'])){
     $software->registrarSoftware($datosForm);
   }
 
+  if ($_POST['operation'] == 'eliminarSoftware'){
+    $software->eliminarSoftware($_POST['idsoftware']);
+  }
 
 }
 ?>

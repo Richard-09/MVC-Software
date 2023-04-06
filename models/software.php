@@ -43,5 +43,15 @@ class Software extends Conexion{
     }
   }
 
+  public function eliminarSoftware($idsoftware = 0){
+    try{
+      $comando = $this->accesoBD->prepare("CALL spu_software_eliminar(?)");
+      $comando->execute(array($idsoftware));
+    }
+    catch(Exception $e){
+      die($e->getMessage());
+    }
+  }
+
 }
 ?>

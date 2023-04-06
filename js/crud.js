@@ -52,7 +52,29 @@
               });
           }
       }
+    }
+
+ //Evento click eliminar
+ $("#tabla").on("click", ".eliminar", function (){
+  if (confirm("¿Esta seguro de eliminar este registro?")){
+      const idsoftware = $(this).attr("data-codigo");
+    
+      const datos ={
+          'operation'    :   'eliminarSoftware',
+          'idsoftware'   :   idsoftware
+      };
+
+      $.ajax({
+        url: './controllers/software.controller.php',
+        type: 'POST',
+        data: datos,
+        success: function (e){
+          listarSoftware();
+        }
+    });
   }
+  
+});
 
 
     listarSoftware();
